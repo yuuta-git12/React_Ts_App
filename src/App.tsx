@@ -2,28 +2,23 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const title = 'React page.';
+const message = "メッセージを表示します。";
+
+function Msg(){
+  return <p className='msg'>Hello!!</p>
+}
+
 // App関数(Reactのコンポーネント)の定義
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      
-      <h1>React & JSX</h1>
-      <p>this isReact & JSX sample application.</p>
-      
+    <div className="container">
+      <h1>{title}</h1>
+      <h2>{message}</h2>
+      <Msg />
+      <Msg />
+      <Msg />
+      { Msg() }
     </div>
   );
 }
