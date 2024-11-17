@@ -8,7 +8,10 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
+  // Reactのコンポーネント　この内部をStrict(厳格)モードで扱うためのタグ
+  //厳格なエラーチェックが有効化されコードの安全性が向上する
   <React.StrictMode>
+    {/* App.tsxで作成したコンポーネントを呼び出している */}
     <App />
   </React.StrictMode>
 );
