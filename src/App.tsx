@@ -66,6 +66,15 @@ function Table(){
   )
 }
 
+function getData(n:number){
+  const flg = n % 2 == 0;
+  return(
+    <p className='msg'
+      style={flg ? {backgroundColor:'gray',color:'white'}:{}}>
+      [{n+1}]{user_data[n].name}({user_data[n].age}) &lt;{user_data[n].mail}&gt;
+    </p>
+  )
+}
 
 // App関数(Reactのコンポーネント)の定義
 function App() {
@@ -112,6 +121,12 @@ function App() {
       
       <Table/>
 
+      {getData(0)}
+      {getData(1)}
+      {getData(2)}
+      {getData(3)}
+      {getData(4)}
+      
       </div>
     </div>
   );
