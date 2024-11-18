@@ -4,7 +4,8 @@ import './App.css';
 
 const title = 'React page.';
 const message = "メッセージを表示します。";
-const content = `✳️これが、trueの時に表示されるメッセージです。ちゃんと表示されていますか？`;
+const content_true = `✳️これが、trueの時に表示されるメッセージです。ちゃんと表示されていますか？`;
+const content_false = `✳️これは、falseの時の表示です。。。。`;
 
 const flg = true;
 
@@ -53,9 +54,13 @@ function App() {
       <Msg msg={"最初のメッセージ"} size={20} color={"red"} />
       <Msg msg={"次のメッセージです"} size={20} color={"green"} />
       <Msg msg={"最後のメッセージでした"} size={20} color={"blue"} />
-      {flg &&
+      {flg ?
         <div className='msg'>
-          <p>{content}</p>
+          <p>{content_true}</p>
+        </div>
+        :
+        <div className='msg'>
+          <p>{content_false}</p>
         </div>
       }
       
