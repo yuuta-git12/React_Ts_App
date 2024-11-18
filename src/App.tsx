@@ -42,6 +42,31 @@ function Msg(props: MsgProps){
   return <p className='msg' style = {s}>{props.msg}</p>
 }
 
+//tableで表示したリスト
+function Table(){
+  return(
+    <table className="data-table">
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>mail</th>
+          <th>age</th>
+        </tr>
+      </thead>
+      <tbody>
+        {user_data.map(value =>
+          <tr>
+            <td>{value.name}</td>
+            <td>{value.mail}</td>
+            <td>{value.age}</td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  )
+}
+
+
 // App関数(Reactのコンポーネント)の定義
 function App() {
   return (
@@ -84,25 +109,8 @@ function App() {
         <ol>
           {data}
         </ol>
-        
-        <table className="data-table">
-          <thead>
-            <tr>
-              <th>name</th>
-              <th>mail</th>
-              <th>age</th>
-            </tr>
-          </thead>
-          <tbody>
-            {user_data.map(value =>
-              <tr>
-                <td>{value.name}</td>
-                <td>{value.mail}</td>
-                <td>{value.age}</td>
-              </tr>
-            )}
-          </tbody>
-        </table>
+      
+      <Table/>
 
       </div>
     </div>
