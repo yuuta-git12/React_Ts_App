@@ -45,6 +45,12 @@ interface DataInterface {
   }
 }
 
+interface MsgPropsChildToParent{
+  message: string;
+  // callback属性　stringの引数を持ち戻り値のない関数voidを指定
+  callback: (msg: string) => void;
+}
+
 
 //propsはオブジェクトを表す MsgPropsは値のタイプ
 function Msg(props: MsgProps){
@@ -79,6 +85,18 @@ function MsgArrayContents(props:{children:Array<any>}){
     </ol>
   );
 }
+
+function MsgChildToParent(props: MsgPropsChildToParent){
+  // callback関数に引数を指定して実行
+  //　子コンポーネントから親コンポーネント(App)に文字列を送る
+  props.callback("コールバックが返されました。");
+  return (
+    <div className="msg">
+      {props.message}
+    </div>
+  )
+}
+
 
 //tableで表示したリスト
 function Table(){
@@ -124,6 +142,7 @@ function Data(props:DataInterface){
 
 // App関数(Reactのコンポーネント)の定義
 function App() {
+  let callback = "none";
   return (
     <div className="container">
       <style>{`
@@ -215,6 +234,13 @@ function App() {
       <Ellipse width={125} height={125} x={100} y={300} color="#f006"></Ellipse>
       <Ellipse width={150} height={150} x={150} y={350} color="#f006"></Ellipse>
       <Ellipse width={175} height={175} x={200} y={400} color="#f006"></Ellipse>
+
+      <MsgChildToParent message={message}
+        callback={(msg: string)=>{
+          callback = msg;
+          console.log(callback);
+          alert("callback:" + callback);
+        }} />
 
       </div>
     </div>
