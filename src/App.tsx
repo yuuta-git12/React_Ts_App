@@ -31,6 +31,15 @@ interface MsgProps {
   color: string
 }
 
+interface DataInterface {
+  data:{
+    name:string,
+    mail:string,
+    age:number
+  }
+}
+
+
 //propsはオブジェクトを表す MsgPropsは値のタイプ
 function Msg(props: MsgProps){
   
@@ -72,6 +81,14 @@ function getData(n:number){
     <p className='msg'
       style={flg ? {backgroundColor:'gray',color:'white'}:{}}>
       [{n+1}]{user_data[n].name}({user_data[n].age}) &lt;{user_data[n].mail}&gt;
+    </p>
+  )
+}
+
+function Data(props:DataInterface){
+  return(
+    <p className="msg">
+      {props.data.name}({props.data.age}) &lt;{props.data.mail}&gt;
     </p>
   )
 }
@@ -127,6 +144,11 @@ function App() {
       {getData(3)}
       {getData(4)}
       
+      <Data data={{name:'Taro', mail:'taro@yamada', age:45}}/>
+      <Data data={{name:'Hanako', mail:'hanako@flower', age:36}}/>
+      <Data data={{name:'Sachiko', mail:'sachiko@happy', age:27}}/>
+      <Data data={user_data[4]}/>
+
       </div>
     </div>
   );
