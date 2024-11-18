@@ -30,6 +30,13 @@ const link_data = {
   caption:`*これは、Googleの検索サイドです。このサイトは、Googleが提供しています。`,
 }
 
+var counter = 0;
+// 1000msごとに処理を実行
+// ここでコンポーネントの更新も行わないと表示内容は変わらない
+setInterval(() => {
+  counter += 1;
+}, 1000);
+
 //MsgPropsインターフェースの定義(オブジェクトの内容を定義)
 interface MsgProps {
   msg: string,
@@ -141,7 +148,8 @@ function Data(props:DataInterface){
 }
 
 // App関数(Reactのコンポーネント)の定義
-function App() {
+// ?をつけることでオプショナル属性(値がない場合も動作する)となる
+function App(props: {counter?: number}) {
   let callback = "none";
   return (
     <div className="container">
@@ -164,6 +172,10 @@ function App() {
       `}</style>
       <h1>{title}</h1>
       <h2>{message}</h2>
+        <h5 className='msg'>
+          {/* props.counterが空の場合は0を表示する */}
+          count: {props.counter || 0}.
+        </h5>
       <div>
       <Msg msg={"最初のメッセージ"} size={20} color={"red"} />
       <Msg msg={"次のメッセージです"} size={20} color={"green"} />
@@ -235,12 +247,12 @@ function App() {
       <Ellipse width={150} height={150} x={150} y={350} color="#f006"></Ellipse>
       <Ellipse width={175} height={175} x={200} y={400} color="#f006"></Ellipse>
 
-      <MsgChildToParent message={message}
+      {/* <MsgChildToParent message={message}
         callback={(msg: string)=>{
           callback = msg;
           console.log(callback);
           alert("callback:" + callback);
-        }} />
+        }} /> */}
 
       </div>
     </div>

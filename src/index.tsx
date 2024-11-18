@@ -4,6 +4,19 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+var counter = 0;
+
+// 1000msごとにroo.renderが実行され画面が更新される
+// rootから全てを書き換えるので非効率な方法ではある。
+setInterval(() => {
+  counter += 1;
+  root.render(
+    <React.StrictMode>
+      <App counter={counter} />
+    </React.StrictMode>
+  )
+}, 1000);
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
