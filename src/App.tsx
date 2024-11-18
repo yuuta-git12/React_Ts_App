@@ -56,6 +56,16 @@ function Msg(props: MsgProps){
   return <p className='msg' style = {s}>{props.msg}</p>
 }
 
+//コンテンツを使った値の渡し方
+function Msg2(props:{children: string}){
+  console.log(props.children);
+  return(
+    <div className="msg">
+      {props.children}
+    </div>
+  );
+}
+
 //tableで表示したリスト
 function Table(){
   return(
@@ -171,6 +181,12 @@ function App() {
         )()
       }
 
+      {/* コンテンツを使った値の渡し方 */}
+      {/* Msg2タグで囲まれたコンテンツをMsg2関数の引数として渡している */}
+      <Msg2>
+        *これは、メッセージです。
+        複数行のメッセージを表示します。
+      </Msg2>
 
       </div>
     </div>
