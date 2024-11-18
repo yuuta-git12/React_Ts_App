@@ -9,6 +9,12 @@ const content_false = `✳️これは、falseの時の表示です。。。。`
 
 const flg = true;
 
+const data = [
+  <li className='msg'>One</li>,
+  <li className='msg'>Two</li>,
+  <li className='msg'>Three</li>,
+];
+
 //MsgPropsインターフェースの定義(オブジェクトの内容を定義)
 interface MsgProps {
   msg: string,
@@ -63,7 +69,13 @@ function App() {
           <p>{content_false}</p>
         </div>
       }
-      
+        <ul>
+          {data}
+        </ul>
+        <ol>
+          {data}
+        </ol>
+        
       </div>
     </div>
   );
