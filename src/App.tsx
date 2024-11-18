@@ -66,6 +66,19 @@ function MsgContents(props:{children: string}){
   );
 }
 
+//複数の子エレメントをコンテンツとして用意する場合
+function MsgArrayContents(props:{children:Array<any>}){
+  return (
+    <ol className='msg'>
+      {props.children.map((child:any) => {
+        return <li style={{margin:"10px 50px"}}>
+          {child.props.children}
+        </li>;
+      })}
+    </ol>
+  );
+}
+
 //tableで表示したリスト
 function Table(){
   return(
@@ -187,6 +200,15 @@ function App() {
         *これは、メッセージです。
         複数行のメッセージを表示します。
       </MsgContents>
+
+      {/* 複数の子エレメントのコンテンツを値として渡す方法 */}
+      <MsgArrayContents>
+        <p>*これはメッセージです</p>
+        <p>複数行のメッセージを表示します</p>
+        <p>番号をつけて順に表示されます。</p>
+      </MsgArrayContents>
+
+
 
       </div>
     </div>
