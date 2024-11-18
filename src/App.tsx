@@ -23,6 +23,11 @@ const user_data = [
   {name:'Kumi', mail:'kumi@class', age:56},
 ]
 
+const link_data = {
+  url:'http://google.com',
+  title:'Google',
+  caption:`*これは、Googleの検索サイドです。このサイトは、Googleが提供しています。`,
+}
 
 //MsgPropsインターフェースの定義(オブジェクトの内容を定義)
 interface MsgProps {
@@ -148,6 +153,24 @@ function App() {
       <Data data={{name:'Hanako', mail:'hanako@flower', age:36}}/>
       <Data data={{name:'Sachiko', mail:'sachiko@happy', age:27}}/>
       <Data data={user_data[4]}/>
+
+      {/* アロー関数を使った画面表示 */}
+      {
+        (()=>
+          <div className='card'>
+            <div className='header'>
+              {link_data.title}
+            </div>
+            <div className='body'>
+              {link_data.caption}
+            </div>
+            <div className='footer'>
+              <a href={link_data.url}>*{link_data.title}に移動</a>
+            </div>
+          </div>
+        )()
+      }
+
 
       </div>
     </div>
