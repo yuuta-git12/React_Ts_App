@@ -5,14 +5,22 @@ import './App.css';
 const title = 'React page.';
 const message = "メッセージを表示します。";
 
-function Msg(msg:string, size:number, color:string){
+//MsgPropsインターフェースの定義(オブジェクトの内容を定義)
+interface MsgProps {
+  msg: string,
+  size: number,
+  color: string
+}
+
+//propsはオブジェクトを表す MsgPropsは値のタイプ
+function Msg(props: MsgProps){
   
   const s = {
-    fontSize: size + "pt",
-    color: color,
+    fontSize: props.size + "pt",
+    color: props.color,
   }
 
-  return <p className='msg' style = {s}>{msg}</p>
+  return <p className='msg' style = {s}>{props.msg}</p>
 }
 
 // App関数(Reactのコンポーネント)の定義
@@ -21,10 +29,11 @@ function App() {
     <div className="container">
       <h1>{title}</h1>
       <h2>{message}</h2>
-      
-      { Msg("最初のメッセージ",36,"red") }
-      { Msg("次のメッセージ",24,"lightgray") }
-      { Msg("最後のメッセージ",12,"black") }
+      <div>
+      <Msg msg={"最初のメッセージ"} size={20} color={"red"} />
+      <Msg msg={"次のメッセージです"} size={20} color={"green"} />
+      <Msg msg={"最後のメッセージでした"} size={20} color={"blue"} />
+      </div>
     </div>
   );
 }
