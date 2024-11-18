@@ -27,6 +27,23 @@ function Msg(props: MsgProps){
 function App() {
   return (
     <div className="container">
+      <style>{`
+      
+        h1{
+          color: white;
+          background-color: blue;
+          padding: 5px;
+        }
+        h2{
+          color: white;
+          background-color: red;
+          padding: 5px 10px;
+        }
+        p.msg{
+          background-color: lightyellow;
+        } 
+
+      `}</style>
       <h1>{title}</h1>
       <h2>{message}</h2>
       <div>
