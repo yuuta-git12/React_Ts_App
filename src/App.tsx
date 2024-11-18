@@ -15,6 +15,15 @@ const data = [
   <li className='msg'>Three</li>,
 ];
 
+const user_data = [
+  {name:'Taro', mail:'taro@yamada', age:45},
+  {name:'Hanako', mail:'hanako@flower', age:37},
+  {name:'Sachiko', mail:'sachiko@happy', age:29},
+  {name:'Jiro', mail:'jiro@change', age:18},
+  {name:'Kumi', mail:'kumi@class', age:56},
+]
+
+
 //MsgPropsインターフェースの定義(オブジェクトの内容を定義)
 interface MsgProps {
   msg: string,
@@ -76,6 +85,25 @@ function App() {
           {data}
         </ol>
         
+        <table className="data-table">
+          <thead>
+            <tr>
+              <th>name</th>
+              <th>mail</th>
+              <th>age</th>
+            </tr>
+          </thead>
+          <tbody>
+            {user_data.map(value =>
+              <tr>
+                <td>{value.name}</td>
+                <td>{value.mail}</td>
+                <td>{value.age}</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+
       </div>
     </div>
   );
