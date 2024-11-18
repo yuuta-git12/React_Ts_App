@@ -5,8 +5,14 @@ import './App.css';
 const title = 'React page.';
 const message = "メッセージを表示します。";
 
-function Msg(){
-  return <p className='msg'>Hello!!</p>
+function Msg(msg:string, size:number, color:string){
+  
+  const s = {
+    fontSize: size + "pt",
+    color: color,
+  }
+
+  return <p className='msg' style = {s}>{msg}</p>
 }
 
 // App関数(Reactのコンポーネント)の定義
@@ -15,10 +21,10 @@ function App() {
     <div className="container">
       <h1>{title}</h1>
       <h2>{message}</h2>
-      <Msg />
-      <Msg />
-      <Msg />
-      { Msg() }
+      
+      { Msg("最初のメッセージ",36,"red") }
+      { Msg("次のメッセージ",24,"lightgray") }
+      { Msg("最後のメッセージ",12,"black") }
     </div>
   );
 }
