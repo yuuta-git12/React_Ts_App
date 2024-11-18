@@ -57,7 +57,7 @@ function Msg(props: MsgProps){
 }
 
 //コンテンツを使った値の渡し方
-function Msg2(props:{children: string}){
+function MsgContents(props:{children: string}){
   console.log(props.children);
   return(
     <div className="msg">
@@ -183,10 +183,10 @@ function App() {
 
       {/* コンテンツを使った値の渡し方 */}
       {/* Msg2タグで囲まれたコンテンツをMsg2関数の引数として渡している */}
-      <Msg2>
+      <MsgContents>
         *これは、メッセージです。
         複数行のメッセージを表示します。
-      </Msg2>
+      </MsgContents>
 
       </div>
     </div>
