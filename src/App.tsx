@@ -4,6 +4,9 @@ import './App.css';
 
 const title = 'React page.';
 const message = "メッセージを表示します。";
+const content = `✳️これが、trueの時に表示されるメッセージです。ちゃんと表示されていますか？`;
+
+const flg = true;
 
 //MsgPropsインターフェースの定義(オブジェクトの内容を定義)
 interface MsgProps {
@@ -50,6 +53,12 @@ function App() {
       <Msg msg={"最初のメッセージ"} size={20} color={"red"} />
       <Msg msg={"次のメッセージです"} size={20} color={"green"} />
       <Msg msg={"最後のメッセージでした"} size={20} color={"blue"} />
+      {flg &&
+        <div className='msg'>
+          <p>{content}</p>
+        </div>
+      }
+      
       </div>
     </div>
   );
