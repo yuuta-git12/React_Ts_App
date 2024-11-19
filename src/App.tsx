@@ -17,11 +17,11 @@ const data = [
 ];
 
 const user_data = [
-  {name:'Taro', mail:'taro@yamada', age:45},
-  {name:'Hanako', mail:'hanako@flower', age:37},
-  {name:'Sachiko', mail:'sachiko@happy', age:29},
-  {name:'Jiro', mail:'jiro@change', age:18},
-  {name:'Kumi', mail:'kumi@class', age:56},
+  {no:'1',name:'Taro', mail:'taro@yamada', age:45},
+  {no:'2',name:'Hanako', mail:'hanako@flower', age:37},
+  {no:'3',name:'Sachiko', mail:'sachiko@happy', age:29},
+  {no:'4',name:'Jiro', mail:'jiro@change', age:18},
+  {no:'5',name:'Kumi', mail:'kumi@class', age:56},
 ]
 
 const link_data = {
@@ -30,12 +30,12 @@ const link_data = {
   caption:`*これは、Googleの検索サイドです。このサイトは、Googleが提供しています。`,
 }
 
-var counter = 0;
+// var counter = 0;
 // 1000msごとに処理を実行
 // ここでコンポーネントの更新も行わないと表示内容は変わらない
-setInterval(() => {
-  counter += 1;
-}, 1000);
+// setInterval(() => {
+//   counter += 1;
+// }, 1000);
 
 //MsgPropsインターフェースの定義(オブジェクトの内容を定義)
 interface MsgProps {
@@ -84,8 +84,8 @@ function MsgContents(props:{children: string}){
 function MsgArrayContents(props:{children:Array<any>}){
   return (
     <ol className='msg'>
-      {props.children.map((child:any) => {
-        return <li style={{margin:"10px 50px"}}>
+      {props.children.map((child:any, index) => {
+        return <li key = {index} style={{margin:"10px 50px"}}>
           {child.props.children}
         </li>;
       })}
@@ -117,8 +117,8 @@ function Table(){
         </tr>
       </thead>
       <tbody>
-        {user_data.map(value =>
-          <tr>
+        {user_data.map(value=>
+          <tr id={value.no}>
             <td>{value.name}</td>
             <td>{value.mail}</td>
             <td>{value.age}</td>
@@ -149,7 +149,7 @@ function Data(props:DataInterface){
 
 // App関数(Reactのコンポーネント)の定義
 // ?をつけることでオプショナル属性(値がない場合も動作する)となる
-function App(props: {counter?: number}) {
+function App(props: {counter?: number, onClick?: () => void}) {
   let callback = "none";
   return (
     <div className="container">
@@ -172,7 +172,7 @@ function App(props: {counter?: number}) {
       `}</style>
       <h1>{title}</h1>
       <h2>{message}</h2>
-        <h5 className='msg'>
+        <h5 className='msg' onClick={props.onClick}>
           {/* props.counterが空の場合は0を表示する */}
           count: {props.counter || 0}.
         </h5>
@@ -196,7 +196,6 @@ function App(props: {counter?: number}) {
           {data}
         </ol>
       
-      <Table/>
 
       {getData(0)}
       {getData(1)}
@@ -207,7 +206,6 @@ function App(props: {counter?: number}) {
       <Data data={{name:'Taro', mail:'taro@yamada', age:45}}/>
       <Data data={{name:'Hanako', mail:'hanako@flower', age:36}}/>
       <Data data={{name:'Sachiko', mail:'sachiko@happy', age:27}}/>
-      <Data data={user_data[4]}/>
 
       {/* アロー関数を使った画面表示 */}
       {
